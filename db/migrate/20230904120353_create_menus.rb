@@ -1,11 +1,11 @@
 class CreateMenus < ActiveRecord::Migration[6.1]
   def change
     create_table :menus do |t|
-      t.integer :user_id, null: false
-      t.integer :menu_id, null: false
-      t.integer :menu_introduction, null: false
-      t.string :genre, null: false
-
+      t.integer :customer_id, null: false
+      t.integer :genre_id, null: false
+      t.text :menu_introduction
+      
+      t.integer :difficulty, null: false, default: 0
       t.timestamps
     end
   end

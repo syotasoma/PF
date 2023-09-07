@@ -9,4 +9,8 @@ class Customer < ApplicationRecord
       customer.name = "ゲスト"
    end
   end
+  
+  has_many :menus
+  has_many :nices
+  has_many :nice_menus, through: :nices, source: :menu
 end
