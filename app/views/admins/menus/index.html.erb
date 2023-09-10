@@ -1,0 +1,19 @@
+<h1>メニュ―一覧</h1>
+<% @menus.each do |menu| %>
+<table>
+  <thead>
+    <tr>
+      <th>メニュ―名</th>
+      <th>ジャンル</th>
+      <th>難易度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= menu.name %></td>
+      <% link_to menu.name,admin_menu_path(menu.id) %>
+      <td><%= genre.id %></td>
+      <td><%= difficulty %></td>
+    </tr>
+  </tbody>
+</table>

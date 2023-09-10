@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2023_09_04_120353) do
     t.integer "customer_id", null: false
     t.integer "genre_id", null: false
     t.text "menu_introduction"
+    t.integer "menu_name", null: false
     t.integer "difficulty", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -8,6 +8,6 @@ class Public::HomesController < ApplicationController
   
 private
   def gunre_params
-    params.require(:gunre).permit(:gunre_name)
+    params.require(:genre).permit(:gunre_name)
   end
 end
