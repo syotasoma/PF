@@ -5,9 +5,4 @@ class Public::HomesController < ApplicationController
   end
   def about2
   end
-  
-private
-  def gunre_params
-    params.require(:genre).permit(:gunre_name)
-  end
 end

@@ -26,6 +26,6 @@ class Admin::MenusController < ApplicationController
   end
  private
  def menu_params
-   params.require(:menu).permit(:menu_id, :menu_name, :menu_explanation, :difficulty, :genru)
+   params.require(:menu).permit(:comment)
  end 
 end

@@ -5,4 +5,5 @@ def destroy
  comment.destroy
  redirect_to admin_menu_path
 end
+
 end

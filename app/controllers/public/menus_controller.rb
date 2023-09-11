@@ -26,4 +26,7 @@ class Public::MenusController < ApplicationController
     menu.destroy
     redirect_to menu_index_path
   end
+  
+  private
+  params.require(:menu).permit(:menu_id, :menu_name, :menu_explanation, :difficulty, :genru, :comment, :image)
 end

@@ -1,13 +1,20 @@
 <body>
   <div class="conteiner">
     <div class="row">
-      <h4 class= "px-3 mx-auto">
-        この度は、本サイトを閲覧いただきありがとうございます。
-        本サイトでは、体力作りをしたい方や、痩せたいけど何から
+      <h2 class= "px-3 mx-auto">
+        この度は、本サイトを閲覧いただきありがとうございます。<br />
+        本サイトでは、体力作りをしたい方や、痩せたいけど何から<br />
         始めればいいのかわからない方のためのサイトです。
-      </h4>
+      </h2>
     </div>
   </div>
-
+  <div class="sidebar">
+    <div class= "row">
+      <h6>ジャンル</h6>
+        <% @genre.each do |genre| %>
+            <div><%= genre_name %></div>
+    </div>
+  </div>
+        <% end %>
 <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post %>
 </body>
