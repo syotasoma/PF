@@ -1,21 +1,21 @@
 <h1>新規メニュー登録</h1>
-<%= form_with model: @menus, url: new_menu_path %>
+<%= form_with model: @menus, url: new_menu_path do |f| %>
 <div class="row">
   <div class="col">
-    <div><%= f.label :menu_name, "メニュー名" %></div>
-    <diV><%= f.text_field :menu_name, autofocus: true %></diV>
+    <%= f.label :menu_name, "メニュー名" %>
+    <%= f.text_field :menu_name, autofocus: true %>
   </div>
   <div class="col">
-    <div><%= f.label :menu_image, "イメージ図" %></div>
-    <div><%= f.file_field :menu_image, acceot: "image/*" %></div>
+    <%= f.label :menu_image, "イメージ図" %>
+    <%= f.file_field :menu_image, acceot: "image/*" %>
   </div>
   <div class="col">
-    <div><%= f.label :menu_introduction, "メニュー説明" %></div>
-    <div><%= f.text_area :menu_introduction %></div>
+    <%= f.label :menu_introduction, "メニュー説明" %>
+    <%= f.text_area :menu_introduction %>
   </div>
   <div class="col">
-    <div><%= f.select :genre_id %></div>
-    <div><%= f.hidden_field :genre_id, :value => menu.genre.id %><div>
+    <%= f.select :genre_id %>
+    <%= f.hidden_field :genre_id, :value => menu.genre.id %>
   </div>
   <div class="col">
     <div id="evaluate_stars">
@@ -31,3 +31,5 @@
      });
   </div>
 </div>
+<%= f.submit "新規追加" %>
+<% end %>

@@ -1,19 +1,17 @@
-<h1>メニュ―一覧</h1>
-<% @menus.each do |menu| %>
-<table>
-  <thead>
-    <tr>
-      <th>メニュ―名</th>
-      <th>ジャンル</th>
-      <th>難易度</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= menu.name %></td>
-      <% link_to menu.name,admin_menu_path(menu.id) %>
-      <td><%= genre.id %></td>
-      <td><%= difficulty %></td>
-    </tr>
-  </tbody>
-</table>
+<h1>メニュー編集</h1>
+<%= form_with model: @menu, url: edit_menu_path do |f| %>
+<div class="cotainer">
+  <div class="row">
+    <h4>イメージ図</h4>
+    <%= f.label_field :menu_iamge, accept: "iamge/*" %>
+  </div>
+  <div class="row">
+    <h4>メニュー名</h4>
+    <%= f.label_field :menu_name, autofocus: true %>
+  </div>
+  <div class="row">
+    <h4>ジャンル</h4>
+    <%= f.select :genre_id %>
+    <%= hidden_field :genre_id :value => menu.genre.id %>
+  </div>
+</div>

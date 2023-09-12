@@ -10,9 +10,12 @@
   </div>
   <div class="sidebar">
     <div class= "row">
-      <h6>ジャンル</h6>
+      <h3>ジャンル</h3>
         <% @genre.each do |genre| %>
+          <div class="col"> 
             <div><%= genre_name %></div>
+            <%= link_to genre.name, menu_index_path(genre.menu_id) %>
+          </div>
     </div>
   </div>
         <% end %>
