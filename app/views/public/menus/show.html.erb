@@ -4,9 +4,41 @@
     <div class="col-lg-4">
       <%= image_tag @menu.get_menu_image(200,200) %>
     </div>
-    <div class="row">
-      
-        
+      <div class="row">
+       <div class="col">
+        <h4>メニュー名</h4>
+        <%= @menu.manu_name %>
+       </div>
+       <div class="col">
+        <h4>ジャンル<h4>
+        <%= @menu.genre.id %>
+       </div>
+       <div class="col">
+        <h4>難易度</h4>
+        <%= @menu.dificullyty %>
+       </div>
+       <div class="col">
+         <h4>メニュ―説明</h4>
+         <%= @menu.menu_introduction %>
+       </div>
+       <div class="col">
+         <h4>コメント</h4>
+         <%= @menu.comment %>
+       </div>
+       <div class="col">
+         <% if @menu.nice.favorited_by?(current_user) %>
+         <p>
+           <%= link_to nice_path(@nice), method: :delete do %>
+           ♥<%= @nice.nice.count %>いいね
+           <% end %>
+         </p>
+         <% else %>
+         <p>
+           <%=link_to nice_path(@nice), method: :post do %>
+           ♡<%= @nice.nice.count %>いいね
+           <% end %>
+         </p>
+       </div>
       </div>
     </div>
   </div>

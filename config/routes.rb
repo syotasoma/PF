@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get "customers/mypage" => "customers#show"
   get "customers/mypage/edit" => "customers#edit"
   patch "/withdrawal" => "customers#withdrawal"
-  resources :menu, only: [:index, :show, :edit, :new, :create, :update, :destroy]
+  resources :menus, only: [:index, :show, :edit, :new, :create, :update, :destroy]
   resources :searchs, only: [:index]
   resources :comment, only: [:create, :update]
   resources :nice, only: [:create, :destroy, :index]

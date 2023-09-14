@@ -6,14 +6,16 @@
       <th>メニュ―名</th>
       <th>ジャンル</th>
       <th>難易度</th>
+      <th>詳細表示</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><%= menu.name %></td>
-      <% link_to menu.name,admin_menu_path(menu.id) %>
-      <td><%= genre.id %></td>
+      <td><%= menu.genre.name %></td>
       <td><%= difficulty %></td>
+      <td><%= link_to "詳細を見る", admin_menu_path(menu.id) %></td>
     </tr>
   </tbody>
 </table>
+<% end %>

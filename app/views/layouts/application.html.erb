@@ -84,6 +84,10 @@
                       ゲストログイン
                     <% end %>
                   </li>
+                    <%= form_with(url: searchs_path, method: :get, local: true) do %>
+                    <%= text_field_tag :search, params[:search] %>
+                    <%= submit_tag "Search" %>
+                  <% end %>
                 <% end %> 
               
             </ul>

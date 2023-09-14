@@ -24,9 +24,12 @@ class Public::MenusController < ApplicationController
   def destroy
     menu = Menu.find(params[:id])
     menu.destroy
-    redirect_to menu_index_path
+    redirect_to "/menus"
   end
   
+  
   private
-  params.require(:menu).permit(:menu_id, :menu_name, :menu_explanation, :difficulty, :genru, :comment, :image)
+  def menu_params
+  params.require(:menu).permit(:menu_id, :menu_name, :menu_explanation, :difficulty, :genre, :comment, :image)
+  end
 end
