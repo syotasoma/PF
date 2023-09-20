@@ -13,8 +13,7 @@
       <h3>ジャンル</h3>
         <% @genre.each do |genre| %>
           <div class="col"> 
-            <div><%= genre_name %></div>
-            <%= link_to genre.name, menu_index_path(genre.menu_id) %>
+            <%= link_to genre.genre_name, genre_path(genre.id) %>
           </div>
     </div>
   </div>

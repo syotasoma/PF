@@ -13,4 +13,5 @@ class Customer < ApplicationRecord
   has_many :menus
   has_many :nices
   has_many :nice_menus, through: :nices, source: :menu
+  has_many :comments
 end

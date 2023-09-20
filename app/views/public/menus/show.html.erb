@@ -7,39 +7,76 @@
       <div class="row">
        <div class="col">
         <h4>メニュー名</h4>
-        <%= @menu.manu_name %>
+        <%= @menu.menu_name %>
        </div>
        <div class="col">
         <h4>ジャンル<h4>
-        <%= @menu.genre.id %>
+        <%= @menu.genre.genre_name %>
        </div>
        <div class="col">
         <h4>難易度</h4>
-        <%= @menu.dificullyty %>
+        
+        <div id="difficulty_raty"></div>
+         <script>
+          $(document).on('turbolinks:load', function() {
+              
+            let elem = document.querySelector('#difficulty_raty');
+              
+            if (elem == null) return;
+              
+            elem.innerHTML = ""
+            let opt = {  
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              score: <%= @menu.difficulty %>,
+              readOnly: true
+            };
+              raty(elem, opt);
+            });
+          </script>
        </div>
        <div class="col">
          <h4>メニュ―説明</h4>
          <%= @menu.menu_introduction %>
        </div>
        <div class="col">
+         <p>コメント件数:<%= @menu.comments.count %></p>
+         <% @menu.comments.each do |comment| %>
+         <h4>コメント投稿者</h4>
+         <%= comment.customer.last_name + comment.customer.first_name %>
          <h4>コメント</h4>
-         <%= @menu.comment %>
+         <%= comment.comment %>
+         <%= comment.created_at.strftime('%Y/%m/%d') %>
+         <% if comment.customer_id == current_customer.id %>
+         <%= link_to "削除", menu_comment_path(@menu.id, comment.id), method: :delete %>
+         <% end %>
+         <% end %>
        </div>
        <div class="col">
-         <% if @menu.nice.favorited_by?(current_user) %>
+         <%= form_with model: [@menu, @comment] do |f| %>
+         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+         <%= f.submit "送信する" %>
+         <% end %>
+       </div>
+       <div class="col">
+         <% if current_customer.present? %>
+         <% if @menu.favorited_by?(current_customer) %>
          <p>
-           <%= link_to nice_path(@nice), method: :delete do %>
-           ♥<%= @nice.nice.count %>いいね
+           <%= link_to menu_nice_path(@menu), method: :delete do %>
+           ♥<%= @menu.nices.count %>いいね
            <% end %>
          </p>
          <% else %>
          <p>
-           <%=link_to nice_path(@nice), method: :post do %>
-           ♡<%= @nice.nice.count %>いいね
+           <%=link_to menu_nice_path(@menu), method: :post do %>
+           ♡<%= @menu.nices.count %>いいね
            <% end %>
+          <% end %>
+         <% end %>
          </p>
        </div>
       </div>
     </div>
   </div>
 </div>
+<%= link_to "編集する", edit_menu_path %>

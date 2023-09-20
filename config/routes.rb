@@ -20,16 +20,20 @@ Rails.application.routes.draw do
   get "customers/mypage" => "customers#show"
   get "customers/mypage/edit" => "customers#edit"
   patch "/withdrawal" => "customers#withdrawal"
-  resources :menus, only: [:index, :show, :edit, :new, :create, :update, :destroy]
+  resources :menus, only: [:index, :show, :edit, :new, :create, :update, :destroy] do 
+   resource :nice, only: [:create, :destroy]
+   resources :comments, only: [:create, :destroy]
+  end
+  resources :nice, only: [:index]
   resources :searchs, only: [:index]
-  resources :comment, only: [:create, :update]
-  resources :nice, only: [:create, :destroy, :index]
   resources :customers, only: [:show, :edit, :update]
+  resources :genres, only: [:show]
   end
   namespace :admin do
   root to: "homes#top"
-  resources :menu, only: [:index, :show, :destroy, :edit, :update]
-  resources :comment, only: [:destroy]
+  resources :menu, only: [:index, :show, :destroy, :edit, :update] do
+   resources :comment, only: [:destroy]
+ end
   resources :customers, only: [:index, :show, :edit, :update]
   resources :genre, only: [:index, :create, :edit, :update, :destroy]
   end
