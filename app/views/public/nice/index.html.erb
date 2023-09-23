@@ -1,0 +1,39 @@
+<h1>お気に入り一覧</h1>
+<% @nices.each do |nice| %>
+<div class="cotainer">
+  <div class="row">
+    <div class="col">
+      <h4>メニュー名</h4>
+      <%= nice.menu.menu_name %>
+      </div>
+      <div class="col">
+        <h4>ジャンル</h4>
+        <%= nice.menu.genre_name %>
+      </div>
+      <div class="col">
+        <h4>難易度</h4>
+         <div id="difficulty_raty"></div>
+         <script>
+          $(document).on('turbolinks:load', function() {
+            let elem = document.querySelector('#difficulty_raty');
+            if (elem == null) return;
+      
+            elem.innerHTML = ""
+            let opt = {  
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              score: <%= menu.difficulty %>,
+              readOnly: true
+            };
+              raty(elem, opt);
+            });
+          </script>
+      </div>
+      <div class="col">
+        <h4>詳細表示</h4>
+        <%= link_to"詳細を見る",menu_path(menu.id) %>
+      </div>
+  </div>
+ </div>
+</div>
+<% end %>

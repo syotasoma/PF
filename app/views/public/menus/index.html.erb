@@ -12,12 +12,13 @@
         <%= menu.genre.genre_name %>
     </div>
        <div class="col">
+         
         <h4>難易度</h4>
-        <div id="post_raty"></div>
+        <div id="post_raty<%= menu.id %>" class="classRaty" data-score="<%= menu.difficulty %>"></div>
+        <!--#idをを使った書き方（ネットの書き方）-->
         <script>
           $(document).on('turbolinks:load', function() {
-            
-            let elem = document.querySelector('#post_raty');
+            let elem = document.querySelector('#post_raty<%= menu.id %>');
             
             if (elem == null) return;
             
@@ -36,3 +37,21 @@
   </div>
       <div><%= link_to "詳細を見る", menu_path(menu.id) %></div>
 <% end %>
+
+<!--#基本的な書き方-->
+<!--script>
+// $(".classRaty").each(function(i, e){
+//   let elem = e;
+
+//   if (elem == null) return;
+  
+//   elem.innerHTML = ""
+//   let opt = {  
+//     starOn: "<%#= asset_path('star-on.png') %>",
+//     starOff: "<#%= asset_path('star-off.png') %>",
+//     score: e.dataset.score,
+//     readOnly: true
+//   };
+//     raty(elem, opt);
+//   });
+</script-->
