@@ -24,7 +24,7 @@ Rails.application.routes.draw do
    resource :nice, only: [:create, :destroy]
    resources :comments, only: [:create, :destroy]
   end
-  resources :nice, only: [:index]
+  resources :nices, only: [:index]
   resources :searchs, only: [:index]
   resources :customers, only: [:show, :edit, :update]
   resources :genres, only: [:show]

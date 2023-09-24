@@ -2,9 +2,9 @@ class Public::NicesController < ApplicationController
   before_action :set_customer, only: [:nice]
   
   def index
-    @customer = Customer.find(params[:id])
-    nices = Nice.where(customer_id: @customer.id).pluck(:menu_id)
-    @nices = Nice.find(nices)
+    @customer = current_customer
+    @nices = Nice.where(customer_id: @customer.id)
+    # @nices = current_customer.nices
   end 
   def create
    @menu = Menu.find(params[:menu_id])

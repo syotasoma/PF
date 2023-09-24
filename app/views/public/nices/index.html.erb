@@ -8,21 +8,21 @@
       </div>
       <div class="col">
         <h4>ジャンル</h4>
-        <%= nice.menu.genre_name %>
+        <%= nice.menu.genre.genre_name %>
       </div>
       <div class="col">
         <h4>難易度</h4>
-         <div id="difficulty_raty"></div>
+          <div id="difficulty_raty<%= nice.menu.id %>" class="classRaty" data-score="<%= nice.menu.difficulty %>"></div>
          <script>
           $(document).on('turbolinks:load', function() {
-            let elem = document.querySelector('#difficulty_raty');
+            let elem = document.querySelector('#difficulty_raty<%= nice.menu.id %>');
             if (elem == null) return;
       
             elem.innerHTML = ""
             let opt = {  
               starOn: "<%= asset_path('star-on.png') %>",
               starOff: "<%= asset_path('star-off.png') %>",
-              score: <%= menu.difficulty %>,
+              score: <%= nice.menu.difficulty %>,
               readOnly: true
             };
               raty(elem, opt);
@@ -31,7 +31,7 @@
       </div>
       <div class="col">
         <h4>詳細表示</h4>
-        <%= link_to"詳細を見る",menu_path(menu.id) %>
+        <%= link_to"詳細を見る",menu_path(nice.menu.id) %>
       </div>
   </div>
  </div>
