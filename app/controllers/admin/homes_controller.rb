@@ -1,5 +1,5 @@
 class Admin::HomesController < ApplicationController
 def top
-  @menu = Menu.page(params[:page])
+  @customer = Customer.all
 end 
 end

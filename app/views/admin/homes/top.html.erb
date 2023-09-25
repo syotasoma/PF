@@ -1,13 +1,25 @@
+<h1>会員一覧</h1>
+<% @customer.each do |customer| %>
 <body>
   <div class="conteiner">
     <div class="row">
-      <h4 class= "px-3 mx-auto">
-        この度は、本サイトを閲覧いただきありがとうございます。
-        本サイトでは、体力作りをしたい方や、痩せたいけど何から
-        始めればいいのかわからない方のためのサイトです。
-      </h4>
+     <div class="col">
+       <h6>氏名</h6>
+       <%= customer.last_name + customer.first_name %>
+     </div>
+     <div class="col">
+       <h6>メールアドレス</h6>
+       <%= customer.email %>
+     </div>
+     <div class="col">
+       <h6>ステータス</h6>
+       <% if customer.is_deleted %>
+       <div>退会済み</div>
+       <% else %>
+       <div>有効</div>
+       <% end %>
+     </div>
+     
     </div>
   </div>
-
-<%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post %>
-</body>
+<% end %>
