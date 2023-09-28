@@ -19,7 +19,9 @@
       <h4>メニュー投稿</h4>
       <%= link_to "投稿する", new_menu_path %>
     </div>
+    <% unless current_customer.email == 'guest@example.com' %>
       <h4>登録情報</h4>
       <%= link_to "編集する", customers_mypage_edit_path %>
+    <% end %>
   </div>
 </div>

@@ -1,19 +1,39 @@
 <h1>メニュ―一覧</h1>
+
 <% @menus.each do |menu| %>
-<table>
-  <thead>
-    <tr>
-      <th>メニュ―名</th>
-      <th>ジャンル</th>
-      <th>難易度</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= menu.name %></td>
-      <% link_to menu.name,admin_menu_path(menu.id) %>
-      <td><%= genre.id %></td>
-      <td><%= difficulty %></td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-lg-4">
+      <h4>メニュー名</h4>
+        <%= menu.menu_name %>
+    </div>
+    <div class="col">
+        <h4>ジャンル<h4>
+        <%= menu.genre.genre_name %>
+    </div>
+       <div class="col">
+         
+        <h4>難易度</h4>
+        <div id="post_raty<%= menu.id %>" class="classRaty" data-score="<%= menu.difficulty %>"></div>
+        <!--#idをを使った書き方（ネットの書き方）-->
+        <script>
+          $(document).on('turbolinks:load', function() {
+            let elem = document.querySelector('#post_raty<%= menu.id %>');
+            
+            if (elem == null) return;
+            
+            elem.innerHTML = ""
+            let opt = {  
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              score: <%= menu.difficulty %>,
+              readOnly: true
+            };
+              raty(elem, opt);
+            });
+          </script>
+      </div>
+   </div>
+  </div>
+      <div><%= link_to "詳細を見る", admin_menu_path(menu.id) %></div>
+<% end %>

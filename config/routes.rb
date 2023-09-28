@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   devise_scope :customer do
-      post 'customers/guest_sign_in', to: 'public/sessions#new_guest'
+      post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end #ゲストログイン機能
   scope module: :public do
   
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
   root to: "homes#top"
-  resources :menu, only: [:index, :show, :destroy, :edit, :update] do
+  resources :menus, only: [:index, :show, :destroy] do
    resources :comment, only: [:destroy]
  end
   resources :customers, only: [:index, :show, :edit, :update]

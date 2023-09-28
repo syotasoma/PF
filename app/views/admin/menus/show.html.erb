@@ -1,0 +1,75 @@
+<h1>メニュー詳細</h1>
+<div class="container">
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-lg-4">
+      <%= image_tag @menu.get_menu_image(200,200) %>
+    </div>
+      <div class="row">
+       <div class="col">
+        <h4>メニュー名</h4>
+        <%= @menu.menu_name %>
+       </div>
+       <div class="col">
+        <h4>ジャンル<h4>
+        <%= @menu.genre.genre_name %>
+       </div>
+       <div class="col">
+        <h4>難易度</h4>
+        
+        <div id="difficulty_raty"></div>
+         <script>
+          $(document).on('turbolinks:load', function() {
+              
+            let elem = document.querySelector('#difficulty_raty');
+              
+            if (elem == null) return;
+              
+            elem.innerHTML = ""
+            let opt = {  
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              score: <%= @menu.difficulty %>,
+              readOnly: true
+            };
+              raty(elem, opt);
+            });
+          </script>
+       </div>
+       <div class="col">
+         <h4>メニュ―説明</h4>
+         <%= @menu.menu_introduction %>
+       </div>
+       <div class="col">
+         <p>コメント件数:<%= @menu.comments.count %></p>
+         <% @menu.comments.each do |comment| %>
+         <h4>コメント投稿者</h4>
+         <%= comment.customer.last_name + comment.customer.first_name %>
+         <h4>コメント</h4>
+         <%= comment.comment %>
+         <%= comment.created_at.strftime('%Y/%m/%d') %>
+         <%= link_to "削除", admin_menu_comment_path(@menu.id, comment.id), method: :delete %>
+         <% end %>
+       </div>
+      
+       <div class="col">
+         <% if current_customer.present? %>
+         <% if @menu.favorited_by?(current_customer) %>
+         <p>
+           <%= link_to menu_nice_path(@menu), method: :delete do %>
+           ♥<%= @menu.nices.count %>いいね
+           <% end %>
+         </p>
+         <% else %>
+         <p>
+           <%=link_to menu_nice_path(@menu), method: :post do %>
+           ♡<%= @menu.nices.count %>いいね
+           <% end %>
+          <% end %>
+         <% end %>
+         </p>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= link_to "削除する", admin_menu_path(@menu), method: :delete %>

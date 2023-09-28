@@ -1,0 +1,13 @@
+<h1>登録済み　ジャンル一覧</h1>
+<% @genres.each do |genre| %>
+<div class="cotainer">
+  <div class="row">
+    <div class="col">
+      <h6>ジャンル名</h6>
+      <%= genre.genre_name %>
+    </div>
+    
+  </div>
+</div>
+<%= link_to "編集する", edit_admin_genre_path(genre.id) %>
+<% end %>

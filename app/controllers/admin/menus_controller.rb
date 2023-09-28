@@ -5,27 +5,13 @@ class Admin::MenusController < ApplicationController
   
   def show
     @menus = Menu.all
+    @menu = Menu.find(params[:id])
   end 
   
-  def edit
-    @menu = Menu.find(params[:id])
-  end
-  
-  def update
-    @menu = Menu.find(params[:id])
-    if @menu.update(manu_params)
-      redirect_to admin_menu_path
-    else
-      render :edit
-    end
-  end
   def destroy
-   menu = Menu.find(params:id)
+   menu = Menu.find(params[:id])
    menu.destroy
-   redirect_to admin_menu_index_path
+   redirect_to admin_menus_path
   end
- private
- def menu_params
-   params.require(:menu).permit(:comment)
- end 
+ 
 end

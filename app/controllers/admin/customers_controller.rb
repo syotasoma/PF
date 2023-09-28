@@ -1,6 +1,6 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customers.all
+    @customers = Customer.all
   end 
   
   def show
@@ -8,7 +8,7 @@ class Admin::CustomersController < ApplicationController
   end 
   
   def edit
-    @customer = Customers.find(params[:id])
+    @customer = Customer.find(params[:id])
   end 
   
   def update

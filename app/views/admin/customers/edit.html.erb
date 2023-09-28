@@ -1,1 +1,40 @@
-強制退会させる場合は　<%= link_to "退会", withdrawal_path, method: :patch, data: { confirm: "[確認]退会させてもよろしいですか？"} %>
+<h1>会員情報一覧</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>氏名</h4>
+      <%= @customer.last_name + @customer.first_name %>
+    </div>
+    <div class="col">
+      <h4>氏名（カナ）</h4>
+      <%= @customer.last_name_kana + @customer.first_name_kana %>
+    </div>
+    <div class="col">
+      <h4>メールアドレス</h4>
+      <%= @customer.email %>
+    </div>
+   強制退会させる場合は　<%= link_to "退会", withdrawal_path, method: :patch, data: { confirm: "[確認]退会させてもよろしいですか？"} %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
