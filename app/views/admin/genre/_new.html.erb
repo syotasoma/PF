@@ -1,9 +1,12 @@
-<h1>ジャンル登録</h1><br />
+<h1>ジャンル登録</h1>
+<%= form_with model: @genre, local: true, url: admin_genre_index_path do |f| %>
 <div class="container">
   <div class= "row">
     <div class="col">
-      <h4>ジャンル名</h4>
-      
+      <%= f.label :genre_name, "ジャンル名"%>
+      <%= f.text_field :genre_name, autofocus: true %>
     </div>
   </div>
 </div>
+<%= f.submit"新規追加" %>
+<% end %>

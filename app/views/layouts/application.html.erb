@@ -45,6 +45,11 @@
                       <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
                       ログアウト
                     <% end %>
+                  <li class="nav-item">
+                    <%= link_to admin_root_path, class: 'nav-link text-light' do %>
+                      <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                      管理者TOP
+                    <% end %>
                     <!--カスタマー側のリンクを作成-->
                     <% elsif customer_signed_in? %>
                       <%= form_with(url: searchs_path, method: :get, local: true) do %>
@@ -73,6 +78,11 @@
                     <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-light' do %>
                       <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
                       ログアウト
+                    <% end %>
+                  <li class="nav-item">
+                    <%= link_to root_path, class: 'nav-link text-light' do %>
+                      <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                      ユーザーTOP
                     <% end %>
                   <% else %>
                   <!--#ここから先は各転移先を記入する。-->

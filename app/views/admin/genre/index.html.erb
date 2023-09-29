@@ -9,5 +9,6 @@
     
   </div>
 </div>
-<%= link_to "編集する", edit_admin_genre_path(genre.id) %>
+<%= link_to "削除する", admin_genre_path(genre.id), method: :delete %>
 <% end %>
+<%= render 'admin/genre/new', genre: @genre %>

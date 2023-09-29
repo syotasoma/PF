@@ -11,18 +11,6 @@ class Admin::GenreController < ApplicationController
     end
   end 
   
-  def edit
-    @genre = Genre.find(genre_params)
-  end 
-  
-  def update
-    @genre = Genre.find(params[:id])
-    if @genre.update(genre_params)
-      redirect_to admin_genre_index_path
-    else
-    ender :edit
-    end
-  end 
   def destroy
     genre = Genre.find(params[:id])
     genre.destroy
@@ -31,6 +19,6 @@ class Admin::GenreController < ApplicationController
   
   private
   def genre_params
-    params.reqire(:genre).permit(:genre_id)
+    params.require(:genre).permit(:genre_name)
   end 
 end

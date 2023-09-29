@@ -35,6 +35,6 @@ Rails.application.routes.draw do
    resources :comment, only: [:destroy]
  end
   resources :customers, only: [:index, :show, :edit, :update]
-  resources :genre, only: [:index, :create, :edit, :update, :destroy]
+  resources :genre, only: [:index, :create, :update, :destroy]
   end
 end

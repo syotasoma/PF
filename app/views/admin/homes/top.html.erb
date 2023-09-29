@@ -1,25 +1,23 @@
-<h1>会員一覧</h1>
-<% @customer.each do |customer| %>
+<h1>管理者TOP</h1>
 <body>
   <div class="conteiner">
     <div class="row">
-     <div class="col">
-       <h6>氏名</h6>
-       <%= customer.last_name + customer.first_name %>
-     </div>
-     <div class="col">
-       <h6>メールアドレス</h6>
-       <%= customer.email %>
-     </div>
-     <div class="col">
-       <h6>ステータス</h6>
-       <% if customer.is_deleted %>
-       <div>退会済み</div>
-       <% else %>
-       <div>有効</div>
-       <% end %>
-     </div>
-     
+      <h2 class= "px-3 mx-auto">
+        この度は、本サイトを閲覧いただきありがとうございます。<br />
+        本サイトでは、体力作りをしたい方や、痩せたいけど何から<br />
+        始めればいいのかわからない方のためのサイトです。
+      </h2>
     </div>
   </div>
-<% end %>
+  <div class="sidebar">
+    <div class= "row">
+      <h3>ジャンル</h3>
+        <% @genre.each do |genre| %>
+          <div class="col"> 
+            <%= link_to genre.genre_name, genre_path(genre.id) %>
+          </div>
+    </div>
+  </div>
+        <% end %>
+
+</body>
