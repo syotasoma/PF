@@ -14,6 +14,8 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"; 
 
+import "../jquery.rwdImageMaps.js";
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
