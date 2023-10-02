@@ -1,5 +1,5 @@
 class Admin::HomesController < ApplicationController
 def top
-  @genre = Genre.all
+  @customers = Customer.all
 end 
 end

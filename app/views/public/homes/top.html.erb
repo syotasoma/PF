@@ -16,20 +16,19 @@
       </h2>
       
       <div class="body-wrapper">
-        <%= image_tag "全身画像.jpg", alt: "", usemap: "#image-map", class: "img-fluid" %>
+        <%= image_tag "全身画像2.jpg", alt: "", usemap: "#image-map", class: "img-fluid" %>
         <div class="body-parts">
-          <div id="ude">ude</div>
         </div>
         <map name="image-map">
         	<area alt="腕" title="腕" href="<%= genre_path(1) %>" target="" coords="398,617,497,335" shape="rect">
-        	<area alt="" title="b" href="<%= genre_path(1) %>" target="" coords="303,277,407,341" shape="rect">
-        	<area alt="" title="c" href="<%= genre_path(2) %>" target="" coords="301,345,417,505" shape="rect">
-        	<area alt="" title="d" href="<%= genre_path(3) %>" target="" coords="73,158,167,235" shape="rect">
-        	<area alt="" title="e" href="<%= genre_path(4) %>" target="" coords="37,309,87,146" shape="rect">
-        	<area alt="" title="f" href="全身.jpg" target="" coords="202,309,160,148" shape="rect">
-        	<area alt="" title="g" href="全身.jpg" target="" coords="284,146,416,164" shape="rect">
-        	<area alt="" title="h" href="全身.jpg" target="" coords="137,145,103,133" shape="rect">
-        	<area alt="" title="i" href="全身.jpg" target="" coords="122,255,44" shape="circle">
+        	<area alt="腕" title="腕" href="<%= genre_path(1) %>" target="" coords="157,348,57,627" shape="rect">
+        	<area alt="背中" title="背中" href="<%= genre_path(2) %>" target="" coords="780,283,1030,517" shape="rect">
+        	<area alt="足" title="足" href="<%= genre_path(3) %>" target="" coords="421,1006,276,621" shape="rect">
+        	<area alt="足" title="足" href="<%= genre_path(3) %>" target="" coords="137,629,268,1004" shape="rect">
+        	<area alt="お尻" title="お尻" href="<%= genre_path(4) %>" target="" coords="789,536,1037,668" shape="rect">
+        	<area alt="おなか" title="おなか" href="<%= genre_path(5) %>" target="" coords="171,464,388,554" shape="rect">
+        	<area alt="首・肩" title="首・肩" href="<%= genre_path(6) %>" target="" coords="127,266,440,323" shape="rect">
+        	<area alt="胸" title="胸" href="<%= genre_path(7) %>" target="" coords="156,349,400,444" shape="rect">
         </map>
       </div> 
     </div>
@@ -40,6 +39,3 @@
   jQuery( 'img[usemap]' ).rwdImageMaps();
 </script>
 
-<style>
-
-</style>
