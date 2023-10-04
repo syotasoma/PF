@@ -6,6 +6,11 @@ class Admin::MenusController < ApplicationController
   def show
     @menus = Menu.all
     @menu = Menu.find(params[:id])
+    @comments = @menu.comments.page(params[:page]).per(2)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end 
   
   def destroy

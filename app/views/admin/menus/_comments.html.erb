@@ -1,0 +1,10 @@
+ <p>コメント件数:<%= menu.comments.count %></p>
+         <% comments.each do |comment| %>
+         <h4>コメント投稿者</h4>
+         <%= comment.customer.last_name + comment.customer.first_name %>
+         <h4>コメント</h4>
+         <%= comment.comment %>
+         <%= comment.created_at.strftime('%Y/%m/%d') %>
+         <%= link_to "削除", admin_menu_comment_path(menu.id, comment.id), method: :delete %>
+         <% end %>
+         <%= paginate comments,remote: true %>

@@ -1,44 +1,60 @@
 <h1>新規メニュー登録</h1>
 <%= form_with model: @menu,local: true, url: menus_path do |f| %>
-<div class="row">
-  <div class="col">
-    <%= f.label :menu_name, "メニュー名" %>
-    <%= f.text_field :menu_name, autofocus: true %>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-3">
+      <%= f.label :menu_name, "メニュー名" %>
+      <%= f.text_field :menu_name, autofocus: true %>
+    </div>
   </div>
-  <div class="col">
+<div class="row d-flex justify-content-center">
+  <div class="col-lg-3">
     <%= f.label :menu_image, "イメージ図" %>
     <%= f.file_field :menu_image, acceot: "image/*" %>
   </div>
-  <div class="col">
+</div>
+<div class="row d-flex justify-content-center">
+  <div class="col-lg-3">
     <%= f.label :menu_introduction, "メニュー説明" %>
     <%= f.text_area :menu_introduction %>
   </div>
-  <div class="col">
+</div>
+<div class="row d-flex justify-content-center">
+  <div class="col-lg-3">
     <%= f.collection_select :genre_id,Genre.all,:id,:genre_name %>
     <%#= f.hidden_field :genre_id, :value => menu.genre.id %>
   </div>
-  <div class="col">
+</div>
+<div class="row d-flex justify-content-center">
+  <div class="col-lg-3">
     <div id="evaluate_stars">
       <label>難易度</label>
-    </div>
-  </div>
-  <div class="actions">
-   <div id="difficulty_raty"></div>
-   <script>
-    $(document).on('turbolinks:load', function() {
-      let elem = document.querySelector('#difficulty_raty');
-      if (elem == null) return;
-
-      elem.innerHTML = ""
-      let opt = {  
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        scoreName: 'menu[difficulty]'
-      };
-        raty(elem, opt);
-      });
-    </script>
+   
+  
+    <div class="actions">
+     <div id="difficulty_raty"></div>
+     <script>
+      $(document).off('turbolinks:load').on('turbolinks:load', function() {
+        console.log("Page loaded with Turbolinks");
+        let elem = document.querySelector('#difficulty_raty');
+        if (elem == null) return;
+  
+        elem.innerHTML = ""
+        let opt = {  
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          scoreName: 'menu[difficulty]'
+        };
+          raty(elem, opt);
+        });
+      </script>
+     </div>
+    </div> 
   </div>
 </div>
-<%= f.submit "新規追加" %>
+<div class="row d-flex justify-content-center">
+  <div class="col-lg-3">
+   <%= f.submit "新規追加" %>
+  </div>
+</div>
 <% end %>

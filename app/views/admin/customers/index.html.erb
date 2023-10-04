@@ -18,9 +18,9 @@
        <div>有効</div>
        <% end %>
      </div>
-     
+     <%= link_to "詳細",  edit_admin_customer_path(customer.id) %>
     </div>
   </div>
-  <%= link_to "詳細",  edit_admin_customer_path(customer.id) %>
+  
   <%= paginate @customers %>
 <% end %>

@@ -1,13 +1,19 @@
 class Public::MenusController < ApplicationController
   def index 
-    @menus = Menu.all
+    @menus = Menu.page(params[:page])
   end 
   def show
     @menu = Menu.find(params[:id])
     @comment = Comment.new
-  end 
+    @comments = @menu.comments.page(params[:page]).per(2)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
   def edit
    @menu = Menu.find(params[:id])
+   @customer = Customer.find(params[:id])
   end 
   def new
    @menu = Menu.new

@@ -40,17 +40,7 @@
          <%= @menu.menu_introduction %>
        </div>
        <div class="col">
-         <p>コメント件数:<%= @menu.comments.count %></p>
-         <% @menu.comments.each do |comment| %>
-         <h4>コメント投稿者</h4>
-         <%= comment.customer.last_name + comment.customer.first_name %>
-         <h4>コメント</h4>
-         <%= comment.comment %>
-         <%= comment.created_at.strftime('%Y/%m/%d') %>
-         <% if comment.customer_id == current_customer.id %>
-         <%= link_to "削除", menu_comment_path(@menu.id, comment.id), method: :delete %>
-         <% end %>
-         <% end %>
+        <div id="commentpage"><%= render "public/menus/comments", menu: @menu, comments: @comments %></div>
        </div>
        <div class="col">
          <%= form_with model: [@menu, @comment] do |f| %>
@@ -79,4 +69,9 @@
     </div>
   </div>
 </div>
-<%= link_to "編集する", edit_menu_path %>
+<% if customer_signed_in? %>
+ <% if current_customer == @customer %>
+  <%= link_to "編集する", edit_menu_path %>
+ <% end %>
+<%end %>
+<%= link_to "戻る", :back %> 

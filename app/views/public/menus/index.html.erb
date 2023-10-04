@@ -32,11 +32,14 @@
               raty(elem, opt);
             });
           </script>
+          <div><%= link_to "詳細を見る", menu_path(menu.id) %></div>
       </div>
    </div>
   </div>
-      <div><%= link_to "詳細を見る", menu_path(menu.id) %></div>
+      
+
 <% end %>
+<%= paginate @menus %>
 
 <!--#基本的な書き方-->
 <!--script>
