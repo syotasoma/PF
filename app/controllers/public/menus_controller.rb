@@ -4,6 +4,7 @@ class Public::MenusController < ApplicationController
   end 
   def show
     @menu = Menu.find(params[:id])
+    @customer = @menu.customer
     @comment = Comment.new
     @comments = @menu.comments.page(params[:page]).per(2)
     respond_to do |format|

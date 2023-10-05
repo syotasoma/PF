@@ -1,53 +1,17 @@
 <h1>メニュー詳細</h1>
 <div class="container">
-  <div class="row d-flex justify-content-center mt-5">
-    <div class="col-lg-4">
-      <%= image_tag @menu.get_menu_image(200,200) %>
-    </div>
-      <div class="row">
-       <div class="col">
-        <h4>メニュー名</h4>
-        <%= @menu.menu_name %>
-       </div>
-       <div class="col">
-        <h4>ジャンル<h4>
-        <%= @menu.genre.genre_name %>
-       </div>
-       <div class="col">
-        <h4>難易度</h4>
-        
-        <div id="difficulty_raty"></div>
-         <script>
-          $(document).on('turbolinks:load', function() {
-              
-            let elem = document.querySelector('#difficulty_raty');
-              
-            if (elem == null) return;
-              
-            elem.innerHTML = ""
-            let opt = {  
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              score: <%= @menu.difficulty %>,
-              readOnly: true
-            };
-              raty(elem, opt);
-            });
-          </script>
-       </div>
-       <div class="col">
-         <h4>メニュ―説明</h4>
-         <%= @menu.menu_introduction %>
-       </div>
-       <div class="col">
-        <div id="commentpage"><%= render "public/menus/comments", menu: @menu, comments: @comments %></div>
-       </div>
-       <div class="col">
-         <%= form_with model: [@menu, @comment] do |f| %>
-         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-         <%= f.submit "送信する" %>
-         <% end %>
-       </div>
+  <div class="row">
+    <div class="col-6">
+      <div>メニュー画像</div>
+      <div>投稿者<%= @customer.last_name + @customer.first_name %></div>
+      
+      <div><%= image_tag @menu.get_menu_image(200,200), class: 'img-fluid' %></div>
+      <% if customer_signed_in? && current_customer == @customer %>
+        <div>
+          <%= link_to "編集する", edit_menu_path, class: "btn btn-success" %>
+        </div>
+      <% end %>
+      <div><%= link_to "戻る", :back, class: "btn btn-danger" %></div>
        <div class="col">
          <% if current_customer.present? %>
          <% if @menu.favorited_by?(current_customer) %>
@@ -65,13 +29,58 @@
          <% end %>
          </p>
        </div>
+    </div>
+    <div class="col-6">
+      <div class="row mb-3">
+        <div class="col">メニュー名</div>
+      　<div class="col"><%= @menu.menu_name %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">ジャンル</div>
+        <div class="col"><%= @menu.genre.genre_name %></div>
+      </div>
+    
+      <div class="row mb-3">
+        <div class="col">難易度</div>
+        <div class="col"><div id="difficulty_raty"></div>
+            <script>
+             $(document).on('turbolinks:load', function() {
+                 
+               let elem = document.querySelector('#difficulty_raty');
+                
+               if (elem == null) return;
+                
+               elem.innerHTML = ""
+               let opt = {  
+                 starOn: "<%= asset_path('star-on.png') %>",
+                 starOff: "<%= asset_path('star-off.png') %>",
+                 score: <%= @menu.difficulty %>,
+                 readOnly: true
+               };
+                 raty(elem, opt);
+               });
+            </script>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">メニュー説明</div>
+        <div class="col"><%= @menu.menu_introduction %></div>
+      </div>
+      <div class="row mb-3">
+        <div class="col"><div class="col">
+        <div id="commentpage"><%= render "public/menus/comments", menu: @menu, comments: @comments %></div>
+       </div>
+         <div class="col">
+           <%= form_with model: [@menu, @comment] do |f| %>
+         </div>
+         <div class="col">
+           <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+           <%= f.submit "送信する" %>
+           <% end %>
+         </div>
+         
+       </div>
       </div>
     </div>
-  </div>
-</div>
-<% if customer_signed_in? %>
- <% if current_customer == @customer %>
-  <%= link_to "編集する", edit_menu_path %>
- <% end %>
-<%end %>
-<%= link_to "戻る", :back %> 
+   </div>
+ </div>
