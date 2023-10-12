@@ -1,16 +1,19 @@
 <h1>お気に入り一覧</h1>
+<div class="container">
 <% @nices.each do |nice| %>
-<div class="cotainer">
-  <div class="row">
-    <div class="col">
-      <h4>メニュー名</h4>
-      <%= nice.menu.menu_name %>
+
+  <div class="row d-flex justify-content-end mt-5">
+      <div class="col-lg-4">
+        <h4>メニュー名</h4>
+        <%= nice.menu.menu_name %>
       </div>
-      <div class="col">
+      
+      <div class="col-lg-4">
         <h4>ジャンル</h4>
         <%= nice.menu.genre.genre_name %>
       </div>
-      <div class="col">
+      
+      <div class="col-lg-4">
         <h4>難易度</h4>
           <div id="difficulty_raty<%= nice.menu.id %>" class="classRaty" data-score="<%= nice.menu.difficulty %>"></div>
          <script>
@@ -28,12 +31,12 @@
               raty(elem, opt);
             });
           </script>
-      </div>
-      <div class="col">
-        <h4>詳細表示</h4>
-        <%= link_to"詳細を見る",menu_path(nice.menu.id) %>
+          <div><%= link_to"詳細を見る",menu_path(nice.menu.id), class: "btn btn-info" %></div>
       </div>
   </div>
- </div>
 </div>
+
 <% end %>
+
+
+

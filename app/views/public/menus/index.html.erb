@@ -1,7 +1,7 @@
 <h1>メニュ―一覧</h1>
-
-<% @menus.each do |menu| %>
 <div class="container">
+<% @menus.each do |menu| %>
+
   <div class="row d-flex justify-content-center mt-5">
     <div class="col-lg-4">
       <h4>メニュー名</h4>
@@ -32,15 +32,18 @@
               raty(elem, opt);
             });
           </script>
-          <div><%= link_to "詳細を見る", menu_path(menu.id) %></div>
+          <div><%= link_to "詳細を見る", menu_path(menu.id), class: "btn btn-info" %></div>
       </div>
    </div>
-  </div>
+   
+ 
       
 
-<% end %>
-<%= paginate @menus %>
-
+  <% end %>
+  <div class="pull-right mt-5"> 
+  <%= paginate @menus %>
+  </div>
+ </div>
 <!--#基本的な書き方-->
 <!--script>
 // $(".classRaty").each(function(i, e){

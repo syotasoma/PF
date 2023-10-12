@@ -1,27 +1,41 @@
 <h1>マイページ</h1>
-<h4>登録情報</h4>
+
 
 <div class="container">
-  <div class="row">
-    <div class="col">
+  <div class="row lg-4">
+    <h4>登録情報</h4>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-4 mb-5">
       <h4>氏名</h4>
       <%= @customer.last_name + @customer.first_name %>
     </div>
-    <div class="col">
+  </div>
+  <div class="row d-flex justify-content-center"> 
+    <div class="col-lg-4 mb-5">
       <h4>メールアドレス</h4>
       <%= @customer.email %>
     </div>
-    <div class="col">
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-4 mb-5">
       <h4>いいね一覧（お気に入り）</h4>
-      <%= link_to "見る", nices_path %>
+      <%= link_to "見る", nices_path, class: "btn btn-info" %>
     </div>
-    <div class="col">
+  </div>
+  <div class="row d-flex justify-content-center"> 
+    <div class="col-lg-4 mb-5">
       <h4>メニュー投稿</h4>
-      <%= link_to "投稿する", new_menu_path %>
+      <%= link_to "投稿する", new_menu_path, class: "btn btn-success" %>
     </div>
+  </div>
+  <div class="row d-flex justify-content-center"> 
+    <div class="col-lg-4 mb-5">
     <% unless current_customer.email == 'guest@example.com' %>
       <h4>登録情報</h4>
-      <%= link_to "編集する", customers_mypage_edit_path %>
+      <%= link_to "編集する", customers_mypage_edit_path, class: "btn btn-secondary" %>
     <% end %>
+   </div>
+  </div>
   </div>
 </div>

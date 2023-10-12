@@ -1,26 +1,61 @@
 <h1>会員情報編集画面</h1>
 <div class="container">
-  <div class="row">
-    <h4>姓</h4>
-    <%= @customers.last_name %>
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-lg-4 mb-3">
+      <h4>姓</h4>
+    </div>
+    <div class="col-lg-4 mb-3">
+      <%= @customers.last_name %>
+    </div>
   </div>
-  <div class="row">
-    <h4>名</h4>
-    <%= @customers.first_name %>
+  
+  <div class="row d-flex justify-content-center mt-5">
+    <div class="col-lg-4 mb-3">
+      <h4>名</h4>
+    </div>
+    <div class="col-lg-4 mb-3">
+      <%= @customers.first_name %>
+    </div>
   </div>
-  <div class="row">
+  
+ <div class="row d-flex justify-content-center mt-5">
+  <div class="col-lg-4 mb-3">
     <h4>セイ</h4>
+  </div>
+  <div class="col-lg-4 mb-3">
     <%= @customers.last_name_kana %>
   </div>
-  <div class="row">
+</div>
+
+<div class="row d-flex justify-content-center mt-5">
+  <div class="col-lg-4 mb-3">
     <h4>メイ</h4>
+  </div>
+  <div class="col-lg-4 mb-3">
     <%= @customers.first_name_kana %>
   </div>
-  <%= form_with model: @customer, url: customers_mypage_path, method: :patch do |f| %>
-  <div class="row">
+</div>
+
+<%= form_with model: @customer, url: customers_mypage_path, method: :patch do |f| %>
+<div class="row d-flex justify-content-center mt-5">
+ <div class="col-lg-4 mb-3">
     <h4>メールアドレス</h4>
+ </div>
+  <div class="col-lg-4 mb-3">
     <%= f.text_field :email %>
   </div>
-<%= f.submit "編集内容を保存する" %>
-<%= link_to "退会する", withdrawal_path, method: :patch, data: { confirm: "[確認]退会してもよろしいですか？"} %>
+
+ </div>
+  <div class="row d-flex justify-content-center mt-5">
+   <%= f.submit "編集内容を保存する", class: "btn btn-success" %>
+  </div>
+  <div class="row d-flex justify-content-center mt-5">
+   <%= link_to "退会する", withdrawal_path, method: :patch, class: "btn btn-danger", data: { confirm: "[確認]退会してもよろしいですか？"} %>
+  </div>
+</div>
 <% end %>
+    
+
+  
+  
+ 

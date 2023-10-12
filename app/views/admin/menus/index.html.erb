@@ -7,12 +7,13 @@
       <h4>メニュー名</h4>
         <%= menu.menu_name %>
     </div>
+    
     <div class="col-lg-3">
         <h4>ジャンル<h4>
         <%= menu.genre.genre_name %>
     </div>
+    
        <div class="col-lg-3">
-         
         <h4>難易度</h4>
         <div id="post_raty<%= menu.id %>" class="classRaty" data-score="<%= menu.difficulty %>"></div>
         <!--#idをを使った書き方（ネットの書き方）-->
@@ -32,14 +33,16 @@
               raty(elem, opt);
             });
           </script>
-          <div><%= link_to "詳細を見る", admin_menu_path(menu.id) %></div>
+          <div class="mt-1">
+            <%= link_to "詳細を見る", admin_menu_path(menu.id), class: "btn btn-info" %>
+          </div>
       </div>
    </div>
   </div>
   
 <% end %>
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-9">
     <%= paginate @menus %>
   </div>
 </div>

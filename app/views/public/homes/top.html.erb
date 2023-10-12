@@ -4,16 +4,18 @@
       <h3>ジャンル</h3>
       <ul>
         <% @genre.each do |genre| %>
-          <li><%= link_to genre.genre_name, genre_path(genre.id) %></li>
+          <div style="font-size: 20px"><%= link_to genre.genre_name, genre_path(genre.id) %></div>
         <% end %>
       </ul>
     </div>
     <div class="col-md-9">
-      <h2 class= "col px-3 mx-auto">
+      <div style="font-size: 30px">
         この度は、本サイトを閲覧いただきありがとうございます。<br />
         本サイトでは、体力作りをしたい方や、痩せたいけど何から<br />
         始めればいいのかわからない方のためのサイトです。
-      </h2>
+      </div>
+        
+      
       
       <div class="body-wrapper">
         <%= image_tag "全身画像2.jpg", alt: "", usemap: "#image-map", class: "img-fluid" %>
