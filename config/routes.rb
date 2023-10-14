@@ -17,8 +17,6 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "/about" => "homes#about"
   get "/about2" => "homes#about2"
-  get "customers/mypage" => "customers#show"
-  get "customers/mypage/edit" => "customers#edit"
   patch "/withdrawal" => "customers#withdrawal"
   resources :menus, only: [:index, :show, :edit, :new, :create, :update, :destroy] do 
    resource :nice, only: [:create, :destroy]

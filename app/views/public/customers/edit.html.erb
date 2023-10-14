@@ -5,7 +5,7 @@
       <h4>姓</h4>
     </div>
     <div class="col-lg-4 mb-3">
-      <%= @customers.last_name %>
+      <%= @customer.last_name %>
     </div>
   </div>
   
@@ -14,7 +14,7 @@
       <h4>名</h4>
     </div>
     <div class="col-lg-4 mb-3">
-      <%= @customers.first_name %>
+      <%= @customer.first_name %>
     </div>
   </div>
   
@@ -23,7 +23,7 @@
     <h4>セイ</h4>
   </div>
   <div class="col-lg-4 mb-3">
-    <%= @customers.last_name_kana %>
+    <%= @customer.last_name_kana %>
   </div>
 </div>
 
@@ -32,11 +32,11 @@
     <h4>メイ</h4>
   </div>
   <div class="col-lg-4 mb-3">
-    <%= @customers.first_name_kana %>
+    <%= @customer.first_name_kana %>
   </div>
 </div>
 
-<%= form_with model: @customer, url: customers_mypage_path, method: :patch do |f| %>
+<%= form_with model: @customer, url: customer_path(@customer), method: :patch do |f| %>
 <div class="row d-flex justify-content-center mt-5">
  <div class="col-lg-4 mb-3">
     <h4>メールアドレス</h4>
