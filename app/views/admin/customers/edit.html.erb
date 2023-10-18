@@ -20,7 +20,9 @@
     </div>
     <div class="row d-flex justify-content-center">
       <div class="row-lg-2 mt-5">
-      強制退会させる場合は　<%= link_to "退会", withdrawal_path, method: :patch, data: { confirm: "[確認]退会させてもよろしいですか？"}, class: "btn btn-danger"%>
+        <% if @customer.is_deleted != true %>
+        強制退会させる場合は　<%= link_to "退会", admin_withdrawal_path(@customer), method: :patch, data: { confirm: "[確認]退会させてもよろしいですか？"}, class: "btn btn-danger"%>
+        <% end %>
       </div>
     </div>
 </div>

@@ -14,25 +14,30 @@ Rails.application.routes.draw do
   end #ゲストログイン機能
   scope module: :public do
   
-  root to: "homes#top"
-  get "/about" => "homes#about"
-  get "/about2" => "homes#about2"
-  patch "/withdrawal" => "customers#withdrawal"
-  resources :menus, only: [:index, :show, :edit, :new, :create, :update, :destroy] do 
-   resource :nice, only: [:create, :destroy]
-   resources :comments, only: [:create, :destroy]
+    root to: "homes#top"
+    get "/about" => "homes#about"
+    get "/about2" => "homes#about2"
+    patch "/withdrawal" => "customers#withdrawal"
+    resources :menus, only: [:index, :show, :edit, :new, :create, :update, :destroy] do 
+      resource :nice, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
+    end
+    resources :nices, only: [:index]
+    resources :searchs, only: [:index]
+    resources :customers, only: [:show, :edit, :update]
+    resources :genres, only: [:show]
   end
-  resources :nices, only: [:index]
-  resources :searchs, only: [:index]
-  resources :customers, only: [:show, :edit, :update]
-  resources :genres, only: [:show]
-  end
+  
+  patch "/admin/:id/withdrawal" => "admin/customers#withdrawal",as: :admin_withdrawal
+    
+  
+  
   namespace :admin do
-  root to: "homes#top"
-  resources :menus, only: [:index, :show, :destroy] do
-   resources :comment, only: [:destroy]
- end
-  resources :customers, only: [:index, :show, :edit, :update]
-  resources :genre, only: [:index, :create, :update, :destroy]
+    root to: "homes#top"
+    resources :menus, only: [:index, :show, :destroy] do
+      resources :comment, only: [:destroy]
+    end
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genre, only: [:index, :create, :update, :destroy]
   end
 end

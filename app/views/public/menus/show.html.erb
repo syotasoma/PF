@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-6">
       <div>メニュー画像</div>
-      <div>投稿者<%= @customer.last_name + @customer.first_name %></div>
+      <!--<div>投稿者<%#= @customer.last_name + @customer.first_name %></div>-->
       
       <div><%= image_tag @menu.get_menu_image(200,200), class: 'img-fluid' %></div>
       <% if customer_signed_in? && current_customer == @customer %>

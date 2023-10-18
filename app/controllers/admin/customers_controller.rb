@@ -1,4 +1,5 @@
 class Admin::CustomersController < ApplicationController
+  # before_action :check_admin, only: [:withdrawal]
   def index
     @customers = Customer.page(params[:page])
   end 
@@ -28,4 +29,10 @@ class Admin::CustomersController < ApplicationController
  def customer_params
    params.require(:customer).permit(:is_deleted)
  end 
+ def check_admin
+    # if current_admin
+    #   redirect_to root_path, notice: "admin以外には許可されていません"
+    #   return
+    # end
+ end
 end
