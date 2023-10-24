@@ -9,10 +9,10 @@ Admin.create!(
   email:"z@z",
   password: "zzzzzz"
   )
-Genre.create!(enre_name:"腕")
-Genre.create!(enre_name:"背中")
-Genre.create!(enre_name:"足")
-Genre.create!(enre_name:"お尻")
-Genre.create!(enre_name:"おなか")
-Genre.create!(enre_name:"首・肩")
-Genre.create!(enre_name:"胸")
+Genre.create!(genre_name:"腕")
+Genre.create!(genre_name:"背中")
+Genre.create!(genre_name:"足")
+Genre.create!(genre_name:"お尻")
+Genre.create!(genre_name:"おなか")
+Genre.create!(genre_name:"首・肩")
+Genre.create!(genre_name:"胸")
